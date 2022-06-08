@@ -1,0 +1,42 @@
+{:deps         true
+ :nrepl {:host "0.0.0.0"
+         :port #shadow/env ["SHADOWCLJS_NREPL_PORT" :as :int :default 8899]}
+ :http {:port #shadow/env ["SHADOWCLJS_HTTP_PORT" :as :int :default 9630]
+        :host "0.0.0.0"}
+ :builds {:main {:target #_:node-library :node-script
+                 :main Agent-J.main/-main
+                 :output-to "out/jar/main.js"
+                 :compiler-options {:optimizations #_:advanced :simple
+                                        ;;  :dump-core false
+                                    :stable-names true
+                                    :infer-externs   false #_:auto
+                                    :recompile-dependents true
+                                    :source-maps true
+                                        ;;  :verbose true
+                                    :closure-defines {}
+                                    :warnings {:fn-deprecated false}}
+                 :js-options {:js-provider :shadow
+                              :keep-native-requires true
+                              :keep-as-require #{}}
+                 :devtools {:repl-init-ns Agent-J.main
+                            :repl-pprint true
+                            :autobuild true
+                            :devtools-url "http://localhost:9630"}}
+
+          :ui {:target :browser
+               :output-dir "out/jar/ui"
+               :asset-path "./"
+               :module-loader true
+               :modules {:ui-main {:entries [Agent-J.ui-main]
+                                   :init-fn Agent-J.ui-main/-main}}
+               :compiler-options {:infer-externs   false #_:auto
+                                  :closure-warnings {:global-this :off}
+                                  :closure-defines  {"Agent-J.ui-main.some-var" true}
+                                  :warnings {:fn-deprecated false}}
+               :devtools {:repl-init-ns Agent-J.ui-main
+                          :repl-pprint true
+                          :autobuild true
+                          :after-load Agent-J.ui-main/reload
+                          :devtools-url "http://localhost:9630"
+                          :http-root  "out/jar/ui"
+                          :http-port  #shadow/env ["SHADOWCLJS_DEVTOOLS_HTTP_PORT" :as :int :default 9500]}}}}

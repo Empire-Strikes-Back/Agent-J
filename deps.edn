@@ -1,0 +1,21 @@
+{:paths ["./src"]
+
+ :deps {org.clojure/clojurescript {:mvn/version "1.11.4"}
+        org.clojure/core.async {:mvn/version "1.5.648"}}
+
+ :aliases
+ {:Zazu {:extra-deps {Zazu/Zazu {:git/url "https://github.com/Empire-Strikes-Back/Zazu"
+                                 :sha "063ef7649c01284be8f5a1e9814d5bf83025ad76"}}}
+  
+  :shadow {:extra-deps {thheller/shadow-cljs {:mvn/version "2.18.0"}
+                        nrepl/nrepl {:mvn/version "0.8.3"}
+                        cider/cider-nrepl {:mvn/version "0.25.5"}
+                        cider/piggieback {:mvn/version "0.5.2"}}}
+
+  :main {:extra-deps {clojure.test.check/clojure.test.check {:git/url "https://github.com/clojure/test.check"
+                                                             :sha "b6a318af92e836f1f20960f38a5944168b88d60d"}}}
+
+  :ui {:extra-deps {#_Cusco
+                    reagent/reagent {:mvn/version "1.1.1"}
+                    sci/sci {:git/url "https://github.com/borkdude/sci"
+                             :sha "6c10e494371a37a56bef45c8148435888bae3a45"}}}}}

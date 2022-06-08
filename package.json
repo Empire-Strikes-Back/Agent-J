@@ -1,0 +1,21 @@
+{
+  "main": "main.js",
+  "dependencies": {
+    "fs-extra": "10.1.0",
+    "ipfs": "0.62.3",
+    "ipfs-http-client": "56.0.3",
+    "node-abort-controller": "3.0.1",
+    "orbit-db": "0.28.6",
+    "ws": "8.6.0"
+  },
+  "devDependencies": {
+    "@react-spring/web": "9.4.5",
+    "antd": "4.20.2",
+    "electron": "19.0.1",
+    "konva": "8.3.7",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-konva": "18.0.0-0",
+    "shadow-cljs": "2.18.0"
+  }
+}
